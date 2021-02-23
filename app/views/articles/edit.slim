@@ -1,8 +1,8 @@
 h1 Edit new article
 
 div = link_to 'Back', articles_path
-
-= form_for @article do |f|
+br
+= form_with model: @article do |f|
   div = f.text_field :title, placeholder: 'Title'
   div = f.text_area :body, placeholder: 'Write content here'
   div = f.submit 'Submit Article'

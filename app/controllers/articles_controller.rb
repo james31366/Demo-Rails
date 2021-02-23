@@ -12,10 +12,10 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(
-      title: params['article']['title'],
-      body: params['article']['body']
-    )
+    @article = Article.create(article_params)
+
+    flash[:error] = @article.errors.full_messages if @article.invalid?
+
     redirect_to action: :index
   end
 

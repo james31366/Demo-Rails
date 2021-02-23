@@ -8,6 +8,7 @@ table border='1'
       th ID
       th Title
       th Body
+      th Number of comments
       th Created at
       th Updated at
       th Action
@@ -17,6 +18,7 @@ table border='1'
           td = a.id
           td = a.title
           td = a.body
+          td = a.comments.count
           td = a.created_at.to_date
           td = a.updated_at.to_date
           td
