@@ -2,6 +2,13 @@ h1 This is articles list
 
 div = link_to 'New Article', new_article_path
 br
+
+div = current_admin.email
+div = current_admin.username
+div = "#{current_admin.firstname} #{current_admin.lastname}"
+div = link_to 'Logout', destroy_admin_session_path, method: :delete
+br
+
 table border='1'
   thead
     tr

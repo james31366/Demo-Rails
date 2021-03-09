@@ -1,0 +1,23 @@
+doctype html
+html lang="en"
+  head
+    meta charset="UTF-8" /
+    title Login - Cyber Ware
+    link href="../app/assets/css/auth.css" rel="stylesheet" /
+  body
+    .container
+      form#login.form method="post"
+        h1.form__title Login
+        .form__message.form__message--error
+        .form__input-group
+          input#email.form__input autofocus="" placeholder="Email" type="text" /
+          .form__input-error-message
+        .form__input-group
+          input#password.form__input autofocus="" placeholder="Password" type="password" /
+          .form__input-error-message
+        button#submitLogin.form__button type="submit"  Continue
+        p.form__text
+          a.form__link href="../templates/covid.html"  Back to main page
+        p.form__text
+          a#linkCreateAccount.form__link href="signup.html"  Don't have an account? Create account
+    script src="../static/js/login.js"
