@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Demo</title>
+  <title>Demo - BTS</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
-<h1 style="color: red">
-  <%= flash[:error]&.join(', ') %>
-</h1>
-<%= yield %>
+<div class="container">
+  <h1 style="color: red">
+    <%= flash[:error]&.join(', ') %>
+  </h1>
+  <%= yield %>
+</div>
 </body>
 </html>

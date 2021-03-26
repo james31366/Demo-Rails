@@ -1,4 +1,8 @@
 = form_with model: @article do |f|
+  div Title
   div = f.text_field :title, placeholder: 'Title'
+  div Body
   div = f.text_area :body, placeholder: 'Write content here'
+  div Category
+  div = f.collection_check_bosex6
   div = f.submit 'Submit Article'
