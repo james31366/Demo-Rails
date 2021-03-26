@@ -6,36 +6,29 @@ $color-error: #cc3333;
 $color-success: #4bb544;
 $border-radius: 4px;
 
-body {
-  --color-primary: #009579;
-  --color-primary-dark: #007f67;
-  --color-secondary: #252c6a;
-  --color-third: #008C95;
-  --color-error: #cc3333;
-  --color-success: #4bb544;
-  --border-radius: 4px;
-
+#bodyAuth {
   margin: 0;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/82732925_p0_master1200.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("82732925_p0_master1200.jpg");
   background-size: cover;
 }
 
-.container {
+.container__auth {
+  align-items: center;
   width: 400px;
   max-width: 400px;
-  margin: 1rem;
+  margin: auto;
   padding: 2rem;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: $border-radius;
   background: white;
 }
 
-.container,
+.container__auth,
 .form__input,
 .form__button {
   font: 500 1rem 'Quicksand', sans-serif;
@@ -129,16 +122,20 @@ body {
 }
 
 .form__link {
-  color: var(--color-secondary);
+  color: $color-secondary;
   text-decoration: none;
   cursor: pointer;
+}
+
+#admin_remember_me {
+  margin-right: 5px;
 }
 
 #backToSignup {
   color: $color-third;
 }
 
-#linkCreateAccount {
+#forgotPassword {
   color: $color-third;
 }
 

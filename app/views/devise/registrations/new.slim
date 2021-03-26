@@ -1,0 +1,33 @@
+body#bodyAuth
+  div.container__auth
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      form#createAccount.form method="POST"
+        #accountInfo.form
+          h1.form__title Create Account
+          .form__message.form__message--error
+          .form__input-group
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__input", placeholder: "Email Address", id: 'email'
+            .form__input-error-message
+              = render "devise/shared/error_messages", resource: resource
+          .form__input-group
+            = f.text_field :firstname, autofocus: true, autocomplete: "given-name", class: "form__input", placeholder: "Firstname", id: 'firstname'
+            .form__input-error-message
+          .form__input-group
+            = f.text_field :lastname, autofocus: true, autocomplete: "family-name", class: "form__input", placeholder: "Lastname", id: 'lastname'
+            .form__input-error-message
+          .form__input-group
+            = f.number_field :age, autofocus: true, class: 'form__input', placeholder: 'Age', id: 'age'
+          .form__input-group
+            = f.password_field :password, autocomplete: "new-password", class: "form__input", placeholder: 'Password', id: 'password1'
+            .form__input-error-message
+              / - if @minimum_password_length
+              /   em(= @minimum_password_length / characters minimum)
+              / - end
+              / br
+          .form__input-group
+            = f.password_field :password_confirmation, autocomplete: "new-password", class: "form__input", placeholder: 'Confirm Password', id: 'password2'
+            .form__input-error-message
+          button.form__button type="submit"  Create Account
+          p.form__text
+            = render "devise/shared/links"
+  = javascript_pack_tag 'signup.js'

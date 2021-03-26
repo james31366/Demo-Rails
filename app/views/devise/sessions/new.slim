@@ -1,22 +1,22 @@
-doctype html
-html lang="en"
-  head
-    meta charset="UTF-8" /
-    title Login - Cyber Ware
-  body
-    .container
+body#bodyAuth
+  .container__auth
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       form#login.form method="post"
         h1.form__title Login
         .form__message.form__message--error
         .form__input-group
-          input#email.form__input autofocus="" placeholder="Email" type="text" /
+          = f.email_field :email, class: 'form__input', autofocus: true, autocomplete: "email", placeholder: "Email"
+          / input#email.form__input autofocus="" placeholder="Email" type="text" /
           .form__input-error-message
         .form__input-group
-          input#password.form__input autofocus="" placeholder="Password" type="password" /
+          = f.password_field :password, class: 'form__input', autofocus: true, autocomplete: "current-password", placeholder: "Password"
+          / input#password.form__input autofocus="" placeholder="Password" type="password" /
           .form__input-error-message
+        .form__input-group
+          - if devise_mapping.rememberable?
+            div.field
+              = f.check_box :remember_me
+              = f.label :remember_me
         button#submitLogin.form__button type="submit"  Continue
         p.form__text
-          a.form__link href="../templates/covid.html"  Back to main page
-        p.form__text
-          a#linkCreateAccount.form__link href="signup.html"  Don't have an account? Create account
-    script src="../static/js/login.js"
+          = render 'devise/shared/links'
