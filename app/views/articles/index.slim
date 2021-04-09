@@ -18,6 +18,7 @@
       thead.thead-dark
         tr
           th ID
+          th Cover
           th Title
           th Body
           th Number of comments
@@ -28,6 +29,9 @@
         - @articles.each do |a|
           tr
             td = a.id
+            td
+              - if a.cover_image.attached?
+                = image_tag a.cover_image, width: '64px'
             td = a.title
             td = a.body
             td = a.comments.count

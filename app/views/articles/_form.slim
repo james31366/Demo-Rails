@@ -1,8 +1,10 @@
 = form_with model: @article do |f|
+  div Cover Image
+  div = f.file_field :cover_image
   div Title
   div = f.text_field :title, placeholder: 'Title'
   div Body
   div = f.text_area :body, placeholder: 'Write content here'
-  div Category
-  div = f.collection_check_bosex6
+  / div Category
+  / div = f.collection_check_boxes
   div = f.submit 'Submit Article'

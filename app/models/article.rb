@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
   enum status: { draft: 0, published: 1, archived: 2 }
 
+  has_one_attached :cover_image
+
   has_many :comments
 
   validates :title, :body, presence: true, uniqueness: true
