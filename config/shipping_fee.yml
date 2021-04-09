@@ -1,0 +1,12 @@
+bangkok:
+  silom: 100
+  sathorn: 120
+  samyan:
+    - a
+    - b
+    - c
+chiangmai:
+  xxx: 700
+trang:
+  yyy: 300
+  zzz: 250
