@@ -3,8 +3,6 @@ hr
 div = @article.body
 div = link_to 'Back', articles_path
 hr
-div = @article.body
-hr
   h2 Comments Section
   div
     - @article.comments.each do |comment|

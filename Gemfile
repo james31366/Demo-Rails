@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
+# For uploading file to AWS S3
+gem 'aws-sdk-s3'
 # For pagination
 gem 'kaminari'
 # For authentication

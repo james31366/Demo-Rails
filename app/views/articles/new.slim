@@ -1,5 +1,7 @@
 h1 Add new article
 
-div = link_to 'Back', articles_path
+div
+  = link_to articles_path do
+    =button_tag 'Back', class: 'btn btn-primary'
 br
   =render 'form', article: @article

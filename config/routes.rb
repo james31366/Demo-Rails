@@ -3,11 +3,15 @@ Rails.application.routes.draw do
   get 'test_articles/index'
   get 'comments/index'
   root 'articles#index'
-  #
-  # get '/welcomes', to: 'welcomes#index'
-  # get '/articles', to: 'articles#index'
 
   resources :test_articles, only: :index
+
+  namespace :articles do
+    post 'csv_upload'
+  end
+
+  resources :categories
+
   resources :articles do
     resources :comments
   end

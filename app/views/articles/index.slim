@@ -10,8 +10,10 @@
 .row
   .col
     = form_tag articles_path, method: :get do
-      = text_field_tag 'search', @search, placeholder: 'type something here', class: 'form-control'
-
+      = text_field_tag 'search', @search, placeholder: 'Type something', class: 'form-control'
+  .col-2
+    = link_to articles_path(format: :csv) do
+      = button_tag 'Download CSV', class: 'btn btn-secondary float-right'
 .row.mt-2
   .col-12
     table.table.table-hover
@@ -19,9 +21,12 @@
         tr
           th ID
           th Cover
+          th Status
           th Title
           th Body
-          th Number of comments
+          th Categories
+          th No. Comments
+          th Images
           th Created at
           th Updated at
           th Action
@@ -29,12 +34,17 @@
         - @articles.each do |a|
           tr
             td = a.id
+            td = a.status
             td
               - if a.cover_image.attached?
                 = image_tag a.cover_image, width: '64px'
-            td = a.title
+            td.font-weight-bold = a.title.first(16)
             td = a.body
+            td = a.categories&.map(&:name)&.join(',').presence || 'NA'
             td = a.comments.count
+            td
+              - a.images.each do |image|
+                = image_tag image, width: '32px'
             td.font-weight-light = "#{time_ago_in_words(a.created_at.to_date)} Ago"
             td.font-weight-light = "#{time_ago_in_words(a.updated_at.to_date)} Ago"
             td
@@ -55,3 +65,12 @@
     .float-right
       = link_to new_article_path do
         = button_tag 'Add new Article', class: 'btn btn-primary'
+
+div
+  hr
+
+.row
+  .col
+    = form_tag articles_csv_upload_path, multipart: true do
+      div = file_field_tag :csv_file
+      div = submit_tag :upload

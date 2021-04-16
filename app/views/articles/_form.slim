@@ -5,6 +5,8 @@
   div = f.text_field :title, placeholder: 'Title'
   div Body
   div = f.text_area :body, placeholder: 'Write content here'
+  div Images
+  div = f.file_field :images, multiple: true
   / div Category
-  / div = f.collection_check_boxes
+  / div = f.collection_check_boxes :category_ids
   div = f.submit 'Submit Article'

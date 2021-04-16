@@ -1,0 +1,56 @@
+.row
+  .col-6
+    h1 This is categories list
+  .col-6
+    - if current_admin
+      div = current_admin.email
+      div = link_to 'Logout', destroy_admin_session_path, method: :delete
+    - else
+      div = link_to 'Login', new_admin_session_path
+
+.row
+  .col
+    = form_tag categories_path, method: :get do
+      = text_field_tag 'search', @search, placeholder: 'type something here', class: 'form-control'
+
+.row.mt-2
+  .col-12
+    = link_to products_path do
+      = button_tag 'Product', class: 'btn btn-primary'
+    table.table.table-hover
+      thead.thead-dark
+        tr
+          th ID
+          th Name
+          th Description
+          th Created at
+          th Updated at
+          th Action
+      tbody
+        - @categories.each do |a|
+          tr
+            td = a.id
+            td = a.name
+            td = a.description
+            td.font-weight-light = "#{time_ago_in_words(a.created_at.to_date)} Ago"
+            td.font-weight-light = "#{time_ago_in_words(a.updated_at.to_date)} Ago"
+            td
+              span
+              = link_to category_path(a) do
+                i.fas.fa-eye
+              - if current_admin
+                span.ml-3
+                  = link_to edit_category_path(a) do
+                    i.fas.fa-pen
+                span.ml-3
+                  = link_to category_path(a), method: :delete do
+                    i.fas.fa-trash
+
+.row
+  .col-6
+    = paginate @categories
+  - if current_admin
+    .col-6
+      .float-right
+        = link_to new_category_path do
+          = button_tag 'Add new Category', class: 'btn btn-primary'
