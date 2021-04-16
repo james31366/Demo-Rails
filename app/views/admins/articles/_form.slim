@@ -1,4 +1,4 @@
-= form_with model: @article do |f|
+= form_with model: [:admin, @articles] do |f|
   div Cover Image
   div = f.file_field :cover_image
   div Title
